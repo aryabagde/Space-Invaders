@@ -1,6 +1,7 @@
 # Space-Invaders
 
-## Enter the world of glorious Intergalatic batlle between a one-man-army spaceship and all the aliens 
+## Enter the world of glorious Intergalatic batlle between a one-man-army spaceship and all the aliens
+
 ### Just kiddin XD
 
 ## Made with <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
