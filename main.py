@@ -78,8 +78,8 @@ def fire_bullet(x, y):
     screen.blit(bulletImg, (x + 16, y + 10))
 
 def isCollision(alienX, alienY, bulletX, bulletY):                                         
-    distance = math.sqrt(math.pow(alienX - bulletX, 2) + (math.pow(alienY - bulletY, 2)))
-    if distance < 27:                  
+    distance = math.sqrt(math.pow(alienX - bulletX, 2) + (math.pow(alienY - bulletY, 2)))  #distance formula 
+    if distance < 27:                                              # considering 27 becuase of the size of the alien
         return True                                                # boolean function
     else:
         return False
@@ -127,14 +127,14 @@ while running:                                #infinite loop, it will display th
     for i in range(num_of_enemies):
 
         # Game Over
-        if alienY[i] > 440:
+        if alienY[i] > 440:                    # if the alien reaches the spaceship then GAME OVER
             for j in range(num_of_enemies):
                 alienY[j] = 2000
             game_over_text()
             break
 
-        alienX[i] += alienX_change[i]
-        if alienX[i] <= 0:
+        alienX[i] += alienX_change[i]          #if aliens collide to the leftmost and rightmost side of the screen
+        if alienX[i] <= 0:                     #then we will just increase/decrease the alienX_change accordinly
             alienX_change[i] = 0.2
             alienY[i] += alienY_change[i]
         elif alienX[i] >= 736:
@@ -142,24 +142,24 @@ while running:                                #infinite loop, it will display th
             alienY[i] += alienY_change[i]
 
         # Collision
-        collision = isCollision(alienX[i], alienY[i], bulletX, bulletY)
+        collision = isCollision(alienX[i], alienY[i], bulletX, bulletY)   #when the bullet hits the alien
         if collision:
             bulletY = 480
             bullet_state = "ready"
             score_value += 1
-            alienX[i] = random.randint(0, 736)
+            alienX[i] = random.randint(0, 736)                            #sprawning new alien
             alienY[i] = random.randint(50, 150)
 
-        alien(alienX[i], alienY[i], i)
+        alien(alienX[i], alienY[i], i)                                    #initiating it's movement
 
 
     #Bullet Movement
 
-    if bulletY <= 0:
-        bulletY = 480
+    if bulletY <= 0:                                                      #when the bullet reaches the top most of the screen
+        bulletY = 480                                                     # we will change it's state
         bullet_state = "ready"
 
-    if bullet_state == "fire":
+    if bullet_state == "fire":                                             
         fire_bullet(bulletX, bulletY)
         bulletY -= bulletY_change
 
