@@ -8,4 +8,6 @@
 
 <br/>
 
+<img src = "space_invaders.png" />
+
 ### Want to play, then just download and run the main.py file
